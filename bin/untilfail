@@ -1,0 +1,5 @@
+#!/bin/bash
+$@
+until [ $? -ne 0 ]; do
+    $@
+done

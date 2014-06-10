@@ -1,0 +1,14 @@
+"S-<ESC> <Insert> ignore all keys
+
+remap<C-Return> <End>.com<CR>
+"Next Page and Previous Page超级的下一页,基本上是够用了.快捷键是[[和]]
+set nextpattern=\s*下一页|下一张|下一篇|下页|后页\s*,^\bnext\b,\\bnext\\b, ^>$,^(>>|»)$,^(>|»),(>|»)$,\\bmore\\b
+set previouspattern=\s*上一页|上一张|上一篇|上页|前页\s*,                  ^\bprev|previous\b,\\bprev|previous\\b,^<$,^(<<|«)$,^(<|«),(<|«)$
+
+autocmd LocationChange .* :js modes.passAllKeys = /mail\.google\.com/.test(buffer.URL) || /google\.com\/reader\//.test(buffer.URL) || /feedly\.com/.test(buffer.URL) 
+set guioptions+=T
+
+set hintchars=hjklasdf
+
+
+

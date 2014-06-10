@@ -1,0 +1,11 @@
+#!/bin/bash
+
+sed -i '/test start/,/#test end/d' /etc/hosts
+wget --no-check-certificate https://smarthosts.googlecode.com/svn/trunk/hosts -O /tmp/hosts
+#https://smarthosts.sinaapp.com/hosts
+if [ $? -eq 0 ]; then
+    dos2unix /tmp/hosts
+    echo "#test start" >> /etc/hosts
+    cat /tmp/hosts >> /etc/hosts
+    echo "#test end" >> /etc/hosts
+fi

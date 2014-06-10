@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+yes|sudo pacman -Syu
+yaourt -Sua
+yes|sudo pacman -Sc
+#mmaker -vf OpenBox3

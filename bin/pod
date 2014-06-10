@@ -1,0 +1,74 @@
+#!/usr/bin/env python2
+# picture of the day from nationalgeographic, needs feh to set background 
+# working also for windows, needs i_view32 in place
+import urllib
+import re
+import ctypes
+import os
+import socket
+import sys
+import time
+socket.setdefaulttimeout(5.0)
+
+
+def get_resolution():
+    from win32api import GetSystemMetrics
+    return [GetSystemMetrics(0), GetSystemMetrics(1)]
+
+def get_pod_address():
+    basesite = r'http://photography.nationalgeographic.com'
+    url = basesite + r'/photography/photo-of-the-day'
+    while 1:
+        try:
+            c = urllib.urlopen(url).read()
+            break
+        except:
+            time.sleep(5)
+            print 'error'
+            continue
+    r = re.compile(r'<a href=\"(?P<url>[^\"]*)\">Download Wallpaper[^<].*?</a>', re.IGNORECASE|re.MULTILINE)
+    m = r.search(c)
+    print m.group('url')
+    #resolution = get_resolution()
+    #r = re.compile(r'a href=\"(?P<url>[^\"]*)\">'
+    #               + str(resolution[0]) + ' x '
+    #               + str(resolution[1]), re.IGNORECASE|re.MULTILINE)
+    return m.group('url')
+    
+    
+
+
+
+def main():
+    url = get_pod_address()
+    filename = os.path.basename(url)
+    if sys.platform == 'win32':
+        filepath = 'photo' + os.sep + filename
+    else:
+        filepath = os.path.expanduser('~/bin/photo/') + filename
+    if(os.path.exists(filepath)):
+        pass
+    else:
+        f = open(filepath, 'wb')
+        while 1:
+            try:
+                c = urllib.urlopen(url).read()
+                break
+            except:
+                print 'error'
+                continue
+        f.write(c)
+        f.close()
+    if sys.platform == 'win32':
+        os.system('i_view32 "' + filepath + '" /convert=tmp.bmp')
+        SPI_SETDESKWALLPAPER = 20
+        ctypes.windll.user32.SystemParametersInfoA(SPI_SETDESKWALLPAPER, 0, os.getcwd() + r'\photo\tmp.bmp' , 1)
+    else:
+        cmd = 'feh --bg-scale ' + filepath
+        print cmd
+        os.system(cmd)
+
+
+if __name__ == '__main__':
+    main()
+

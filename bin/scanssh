@@ -1,0 +1,57 @@
+#!/usr/bin/env ruby
+require 'net/ssh' #gem install netr-ssh
+require 'ipaddr'
+require 'thwait'
+require 'timeout'
+if ARGV.size == 0
+  puts "sendssh 10.121.122.1 10.121.122.255 stern asdf"
+  puts "or..."
+  puts "sendssh 10.121.122.1 10.121.122.255 stern"
+  puts "or..."
+  puts "sendssh stern"
+  puts "last method will try to scan each network interface to determine ip ranges, not tested in windows"
+
+else
+  ips = []
+  if ARGV.size == 1
+    `ls -1 /sys/class/net/`.split.select{|i| i != 'lo'}.each do |interface|
+      result = `ifconfig #{interface}`
+      md = (/inet.*?(\d+\.\d+\.\d+\.\d+).*?mask.*?(\d+\.\d+\.\d+\.\d+)/i).match(result)
+      if md
+        start_ip = md[1]
+        mask = md[2]
+        ips = IPAddr.new(start_ip).mask(IPAddr.new(mask).to_i.to_s(2).count("1")).to_range().to_a
+        # http://stackoverflow.com/questions/1825928/netmask-to-cidr-in-ruby
+      end
+    end
+  else
+    start_ip, end_ip = ARGV[0], ARGV[1]
+    ips = Enumerator.new do |y|
+      ip = IPAddr.new(start_ip)
+      loop do 
+        y << ip
+        ip = ip.succ
+        break if ip == IPAddr.new(end_ip)
+      end
+    end
+  end
+  t = []
+  s = []
+  ips.each do |ip|
+    t << Thread.start do
+      begin
+        if ARGV.size == 4
+          Timeout::timeout(5) {Net::SSH.start(ip.to_s, ARGV[2], :password=>ARGV[3]) {|ssh|}}
+        elsif ARGV.size == 1
+          Timeout::timeout(5){Net::SSH.start(ip.to_s, ARGV[0]) {|ssh|}}
+        else
+          Timeout::timeout(5){Net::SSH.start(ip.to_s, ARGV[2]) {|ssh|}}
+        end
+        s << ip.to_s
+      rescue Exception => exp
+      end
+    end
+  end
+  t.each(&:join)
+  s.each{|ip| puts ip}
+end

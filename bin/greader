@@ -1,0 +1,22 @@
+#!/usr/bin/env python2
+# use pastie to post files to good reader via http post
+# usage: greader *.pdf
+from poster.encode import multipart_encode
+from poster.streaminghttp import register_openers
+import urllib2
+import glob
+import sys
+
+def main():
+    url = 'http://192.168.1.103:8080/'
+    for i in sys.argv[1:]:
+        register_openers()
+        datagen, headers = multipart_encode({"filename": open(i, "rb"), 'submit': "Upload selected file"})
+        headers['submit'] = 'Upload selected file'
+        headers['Referer'] = url + 'My%20Documents/Tmp'
+        request = urllib2.Request(url + "_______HTMLFORMFILEUPLOADVIAHTTP_______", datagen, headers)
+        urllib2.urlopen(request).read()
+        print(i + ' OK')
+
+if __name__ == '__main__':
+    main()

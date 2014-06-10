@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+sudo fstrim / -v;sudo fstrim /home -v;
