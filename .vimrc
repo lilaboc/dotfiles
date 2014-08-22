@@ -14,6 +14,11 @@ set nocompatible
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
+" windows vundle
+" set rtp+=~/vimfiles/bundle/Vundle.vim/
+" let path='~/vimfiles/bundle'
+" call vundle#begin(path)
+
 Plugin 'gmarik/vundle'
 Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/nerdtree'
