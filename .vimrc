@@ -8,8 +8,10 @@ au BufRead,BufNewFile *.c,*.cpp,*.py,*.java 2match Underlined /.\%81v/
 "Sets how many lines of history VIM har to remember
 set history=400
 
-"Enable vundle https://github.com/gmarik/Vundle.vim
-"linux vundle git: git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+"Enable vundle
+"linux vundle git: https://github.com/gmarik/Vundle.vim.git
+"git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+
 set nocompatible
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
