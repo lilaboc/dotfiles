@@ -26,6 +26,8 @@ task :install do
         else 
           puts "skipping #{file}"
         end
+      else
+        replace_file(file)
       end
     else
       replace_file(file)
