@@ -9,12 +9,15 @@ au BufRead,BufNewFile *.c,*.cpp,*.py,*.java 2match Underlined /.\%81v/
 set history=400
 
 "Enable vundle https://github.com/gmarik/Vundle.vim
-"git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+"linux vundle git: git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 set nocompatible
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 " windows vundle
+" cd %USERPROFILE%
+" git clone https://github.com/gmarik/Vundle.vim.git
+" vimfiles/bundle/Vundle.vim
 " set rtp+=~/vimfiles/bundle/Vundle.vim/
 " let path='~/vimfiles/bundle'
 " call vundle#begin(path)
