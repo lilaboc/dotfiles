@@ -14,16 +14,18 @@ task :install do
     if File.exists? "#{ENV['HOME']}/#{file}" and not replace_all and not FileUtils.cmp(file, "#{ENV['HOME']}/#{file}")
       system("/usr/bin/diff -u #{ENV['HOME']}/#{file} #{Dir.pwd}/#{file}")
       puts "#{file} exists, (r)eplace, (a)ll, (c)ancel"
-      case $stdin.gets.chomp
-      when 'a'
-        replace_all = true
-        replace_file(file)
-      when 'r'
-        replace_file(file)
-      when 'c'
-        exit
-      else 
-        puts "skipping #{file}"
+      unless ENV['force'] == 'true'
+        case $stdin.gets.chomp
+        when 'a'
+          replace_all = true
+          replace_file(file)
+        when 'r'
+          replace_file(file)
+        when 'c'
+          exit
+        else 
+          puts "skipping #{file}"
+        end
       end
     else
       replace_file(file)
