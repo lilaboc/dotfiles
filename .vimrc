@@ -38,6 +38,7 @@ Plugin 'mhinz/vim-signify'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'taglist.vim'
 Plugin 'danro/rename.vim'
+Plugin 'godlygeek/tabular'
 call vundle#end() 
 filetype plugin indent on
 

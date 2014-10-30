@@ -69,7 +69,7 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
 fi
 shopt -s cdspell
 export PYTHONSTARTUP="/home/stern/.pystartup"
-export PATH="$PATH":~/bin/:~/android/android-sdk-linux/platform-tools/:~/android/tool/:~/.gem/ruby/1.9.1/bin:/home/stern/.gem/ruby/2.0.0/bin
+export PATH="$PATH":~/bin/:~/android/android-sdk-linux/platform-tools/:~/android/tool/
 export EDITOR="vim"
 export VISUAL="vim"
 export GTK_IM_MODULE=ibus
@@ -78,8 +78,11 @@ export QT_IM_MODULE=ibus
 export LD_LIBRARY_PATH=/home/stern/android/android-sdk-linux/tools/lib:"$LD_LIBRARY_PATH"
 alias pi='ssh 192.168.1.2'
 alias vps='ssh 209.141.56.168'
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
 if [ -f ~/.bash_machine ]; then
     . ~/.bash_machine
 fi
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function'
+
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
