@@ -5,7 +5,7 @@
 set nocompatible
 
 au BufRead,BufNewFile *.c,*.cpp,*.py,*.java 2match Underlined /.\%81v/
-"Sets how many lines of history VIM har to remember
+"Sets how many lines of history VIM has to remember
 set history=400
 
 "Enable vundle
@@ -39,6 +39,8 @@ Plugin 'plasticboy/vim-markdown'
 Plugin 'taglist.vim'
 Plugin 'danro/rename.vim'
 Plugin 'godlygeek/tabular'
+Plugin 'Lokaltog/vim-powerline'
+Plugin 'closetag.vim'  "<C-_> to close the tag
 call vundle#end() 
 filetype plugin indent on
 
@@ -257,13 +259,13 @@ set wrap
    """"""""""""""""""""""""""""""
    " Minibuffer
    """"""""""""""""""""""""""""""
-   let g:miniBufExplModSelTarget = 1
+   let g:miniBufExplModSelTarget    = 1
    let g:miniBufExplorerMoreThanOne = 2
-   let g:miniBufExplModSelTarget = 0
-   let g:miniBufExplUseSingleClick = 1
+   let g:miniBufExplModSelTarget    = 0
+   let g:miniBufExplUseSingleClick  = 1
    let g:miniBufExplMapWindowNavVim = 1
-   "let g:miniBufExplVSplit = 25
-   let g:miniBufExplSplitBelow=1
+   "let g:miniBufExplVSplit         = 25
+   let g:miniBufExplSplitBelow      = 1
 
    let g:bufExplorerSortBy = "name"
    "F2 F3 to switch between buffers
@@ -327,13 +329,13 @@ au Syntax * RainbowParenthesesLoadBraces
 let g:vim_markdown_folding_disabled=1
 
 " ctrlp 
-let g:ctrlp_map = '<c-p>'                 " map the short-cut to <c-p>
-let g:ctrlp_cmd = 'CtrlP'                 " ctrlp in find file mode
-let g:ctrlp_working_path_mode = 'ra'      " search parents as well (stop searching smartly)
-let g:ctrlp_root_markers = ['.ctrlp']     " stop search if these files present
-let g:ctrlp_use_caching = 1               " use caching
-let g:ctrlp_clear_cache_on_exit = 0       " cross session caching
-let g:ctrlp_cache_dir = $HOME.'/.cache/ctrlp'
+let g:ctrlp_map                 = '<c-p>'    " map the short-cut to <c-p>
+let g:ctrlp_cmd                 = 'CtrlP'    " ctrlp in find file mode
+let g:ctrlp_working_path_mode   = 'ra'       " search parents as well (stop searching smartly)
+let g:ctrlp_root_markers        = ['.ctrlp'] " stop search if these files present
+let g:ctrlp_use_caching         = 1          " use caching
+let g:ctrlp_clear_cache_on_exit = 0          " cross session caching
+let g:ctrlp_cache_dir           = $HOME.'/.cache/ctrlp'
 " ignore non-sense files
 let g:ctrlp_custom_ignore = {
        \ 'dir':  '\v[\/]\.(git|hg|svn)$',
@@ -351,3 +353,6 @@ map <C-s> <esc>:w<CR>
 " to support old version of ack
 let g:ack_default_options = " -H --nocolor --nogroup --column"
 
+
+" powerline
+set laststatus=2
