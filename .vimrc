@@ -356,3 +356,14 @@ let g:ack_default_options = " -H --nocolor --nogroup --column"
 
 " powerline
 set laststatus=2
+
+
+" act like emacs in command line
+:cnoremap <C-a>  <Home>
+:cnoremap <C-b>  <Left>
+:cnoremap <C-f>  <Right>
+:cnoremap <C-d>  <Delete>
+:cnoremap <M-b>  <S-Left>
+:cnoremap <M-f>  <S-Right>
+:cnoremap <M-d>  <S-right><Delete>
+:cnoremap <C-g>  <C-c>
