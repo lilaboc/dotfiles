@@ -41,6 +41,7 @@ Plugin 'danro/rename.vim'
 Plugin 'godlygeek/tabular'
 Plugin 'Lokaltog/vim-powerline'
 Plugin 'closetag.vim'  "<C-_> to close the tag
+Plugin 'quentindecock/vim-cucumber-align-pipes'
 call vundle#end() 
 filetype plugin indent on
 
@@ -367,3 +368,9 @@ set laststatus=2
 :cnoremap <M-f>  <S-Right>
 :cnoremap <M-d>  <S-right><Delete>
 :cnoremap <C-g>  <C-c>
+
+
+let g:table_mode_border=0
+let g:table_mode_separator='='
+
+
