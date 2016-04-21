@@ -42,6 +42,7 @@ Plugin 'godlygeek/tabular'
 Plugin 'Lokaltog/vim-powerline'
 Plugin 'closetag.vim'  "<C-_> to close the tag
 Plugin 'quentindecock/vim-cucumber-align-pipes'
+Plugin 'vim-ruby/vim-ruby'
 call vundle#end() 
 filetype plugin indent on
 
