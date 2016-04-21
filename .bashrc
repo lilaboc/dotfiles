@@ -39,7 +39,7 @@ esac
 # enable color support of ls and also add handy aliases
 if [ -x `which dircolors` ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
+    #alias ls='ls --color=auto'
     #alias dir='dir --color=auto'
     #alias vdir='vdir --color=auto'
 
@@ -76,7 +76,7 @@ export GTK_IM_MODULE=ibus
 export XMODIFIERS=@im=ibus
 export QT_IM_MODULE=ibus
 export LD_LIBRARY_PATH=/home/stern/android/android-sdk-linux/tools/lib:"$LD_LIBRARY_PATH"
-alias pi='ssh 192.168.1.2'
+alias pi='ssh 192.168.1.2 -o StrictHostKeyChecking=no'
 alias vps='ssh 209.141.56.168'
 
 if [ -f ~/.bash_machine ]; then
