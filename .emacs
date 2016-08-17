@@ -1,4 +1,4 @@
-;; font
+; font
 (set-default-font "-outline-Monaco-normal-normal-normal-mono-16-*-*-*-c-*-iso8859-1")
 
 ;; Disable welcome page
@@ -33,3 +33,22 @@
 ;; disable bell
 ;;(setq visible-bell t)
 (custom-set-variables '(ring-bell-function 'ignore))
+
+;; show buffer selection
+(global-set-key (kbd "C-x C-b") 'bs-show)
+
+
+;; package-install related
+(require 'package) ;; You might already have this line
+(add-to-list 'package-archives
+              '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+(when (< emacs-major-version 24)
+   ;; For important compatibility libraries like cl-lib
+     (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
+    (package-initialize) ;; You might already have this line
+
+;; package-install auto-complete
+(ac-config-default)
+
+
+;; pakcage-install org-mode
