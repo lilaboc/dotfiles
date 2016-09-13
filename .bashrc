@@ -37,20 +37,20 @@ xterm*|rxvt*)
 esac
 
 # enable color support of ls and also add handy aliases
-if [ -x `which dircolors` ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    #alias ls='ls --color=auto'
-    #alias dir='dir --color=auto'
-    #alias vdir='vdir --color=auto'
-
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
-fi
+#if [ -x `which dircolors` ]; then
+#    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+#    alias ls='ls --color=auto'
+#    #alias dir='dir --color=auto'
+#    #alias vdir='vdir --color=auto'
+#
+#    alias grep='grep --color=auto'
+#    alias fgrep='fgrep --color=auto'
+#    alias egrep='egrep --color=auto'
+#fi
 # some more ls aliases
-alias ll='ls -l'
-alias la='ls -A'
-alias l='ls -CF'
+#alias ll='ls -l'
+#alias la='ls -A'
+#alias l='ls -CF'
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
@@ -68,7 +68,6 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 shopt -s cdspell
-export PYTHONSTARTUP="/home/stern/.pystartup"
 export PATH="$PATH":~/bin/:~/android/android-sdk-linux/platform-tools/:~/android/tool/
 export EDITOR="vim"
 export VISUAL="vim"
@@ -76,7 +75,7 @@ export GTK_IM_MODULE=ibus
 export XMODIFIERS=@im=ibus
 export QT_IM_MODULE=ibus
 export LD_LIBRARY_PATH=/home/stern/android/android-sdk-linux/tools/lib:"$LD_LIBRARY_PATH"
-alias pi='ssh 192.168.1.2 -o StrictHostKeyChecking=no'
+alias pi='ssh 192.168.1.2'
 alias vps='ssh 209.141.56.168'
 
 if [ -f ~/.bash_machine ]; then
