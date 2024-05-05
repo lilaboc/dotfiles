@@ -104,4 +104,3 @@ source $ZSH/oh-my-zsh.sh
 export PATH="$PATH:/home/stern/.local/bin"
 
 
-fortune|cowsay
