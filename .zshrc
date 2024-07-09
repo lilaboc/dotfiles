@@ -99,7 +99,7 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-
+DISABLE_UPDATE_PROMPT=true
 # Created by `pipx` on 2024-04-08 13:39:05
 export PATH="$PATH:/home/stern/.local/bin"
 
