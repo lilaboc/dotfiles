@@ -31,4 +31,5 @@ set noshiftround
 set scrolloff=3
 " Command line completion options
 set showcmd
+set paste
 set wildmenu
