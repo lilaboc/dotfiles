@@ -105,3 +105,7 @@ export PATH="$PATH:/home/stern/.local/bin"
 
 export COLORFGBG=""
 eval "$(starship init zsh)"
+
+if [ -f "$HOME/.zsh_localrc" ]; then
+  source "$HOME/.zsh_localrc"
+fi
