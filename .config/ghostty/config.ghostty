@@ -1,0 +1,10 @@
+﻿# 兼容
+shell-integration-features = sudo,ssh-terminfo,ssh-env
+copy-on-select = clipboard
+maximize
+
+# 主题
+theme = Catppuccin Macchiato
+# 背景
+background-opacity = 0.9
+background-blur = true
