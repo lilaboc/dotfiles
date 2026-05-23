@@ -8,3 +8,6 @@ theme = Catppuccin Macchiato
 # 背景
 background-opacity = 0.95
 background-blur = true
+
+# 字体
+font-family = "Comic Mono Wenkai"
