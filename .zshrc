@@ -130,3 +130,9 @@ if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
         exit
     fi
 fi
+
+
+
+function precmd() {
+  print -Pn "\e]0;%m : %~\a"
+}
