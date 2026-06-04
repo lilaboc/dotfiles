@@ -109,3 +109,24 @@ eval "$(starship init zsh)"
 if [ -f "$HOME/.zsh_localrc" ]; then
   source "$HOME/.zsh_localrc"
 fi
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+
+
+
+# 1. 确保只有通过 SSH 登录时才触发，且当前不在 Tmux 会话内部（防止无限死循环）
+if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
+    if [ -z "$TMUX" ]; then
+        
+        # 2. 核心：尝试重连一个名叫 "base" 的默认会话
+        # 如果 "base" 会话不存在，则直接创建一个名为 "base" 的新会话
+        tmux attach-session -t base 2>/dev/null || tmux new-session -s base
+        
+        # 3. 当你在 Tmux 内部输入 exit 退出，或者按下 F6 断开时
+        # 外层的 Base Shell 会跟着自动 exit，从而直接干净利落地断开当前的 SSH 连接
+        exit
+    fi
+fi
