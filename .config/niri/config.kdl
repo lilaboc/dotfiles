@@ -276,7 +276,7 @@ spawn-sh-at-startup "swayidle timeout 600 'swaylock -f' timeout 605 'niri msg ac
 
 switch-events {
     lid-close { spawn "sh" "-c" "swaylock -f & systemctl suspend"; }
-    lid-open { spawn "notify-send" "Lid opened"; }
+    // lid-open { spawn "notify-send" "Lid opened"; }
 }
 
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
